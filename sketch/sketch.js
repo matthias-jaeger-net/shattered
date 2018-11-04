@@ -6,9 +6,9 @@ var cells = [];
 var cellx = celly = 30;
 var cellw, cellh;
 
-const svg = document.getElementById('svg');
+var writer;
 
-var svgString = '<rect fill="plum" x="0" y="0" width="500" height="650" />';
+var svgString = '<svg id="svg" style="width: 500px; height: 650px" viewBox="0 0 500 650" xmlns="http://www.w3.org/2000/svg">';
 
 // Matter JS Namespacing
 var Engine = Matter.Engine,
@@ -19,6 +19,7 @@ var engine, world, constraint;
 
 function setup() {
 	createCanvas(SW, SH);
+
 	// Create Physics Engine & World
 	engine = Engine.create();
 	world = engine.world;
@@ -26,7 +27,6 @@ function setup() {
 
 	cellw = width / cellx;
 	cellh = height / celly;
-
 	for (var r = 0; r < cellx; r++) {
 		for (var c = 0; c < celly; c++) {
 			var x = r * cellw;
@@ -38,12 +38,12 @@ function setup() {
 			svgString += '<rect fill="white" stroke="black" x="' + x + '" y="' + y + '" width="' + cellw + '" height="' + cellh + '" />';
 		}
 	}
-
-
 	var bottom = Bodies.rectangle(0, height, width, 20, {
 		isStatic: true
 	});
 	World.add(world, bottom);
+
+	writer = createWriter('shatterd-by-matthias-jaeger-net.svg');
 }
 
 
@@ -56,8 +56,9 @@ function draw() {
 	}
 	if (frameCount > 100) {
 		noLoop();
-
-		svg.innerHTML = svgString;
+		svgString += '</svg>';
+		writer.print(svgString);
+		writer.close();
 
 	}
 }
