@@ -8,7 +8,7 @@ var cellw, cellh;
 
 var writer;
 
-var svgString = '<svg id="svg" style="width: 500px; height: 650px" viewBox="0 0 500 650" xmlns="http://www.w3.org/2000/svg">';
+var svgString = '<svg id="svg" stroke-width="0.1" style="width: 500px; height: 650px" viewBox="0 0 500 650" xmlns="http://www.w3.org/2000/svg">';
 
 // Matter JS Namespacing
 var Engine = Matter.Engine,
