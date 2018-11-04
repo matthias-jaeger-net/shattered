@@ -2,8 +2,6 @@ function Cell(x, y, w, h) {
 	// get edges of each cell
 	this.shape = randomEdgeVectors(w, h);
 	this.position = createVector(x, y);
-	this.w = w;
-	this.h = h;
 	this.randomStatic = function() {
 		var a = random();
 		return a < 0.2;
