@@ -44,7 +44,7 @@ function Cell(x, y, w, h) {
 		poly += '" fill="white" stroke="black" />';
 
 		svgString += poly
-		console.log(poly)
+		//console.log(poly)
 		endShape(CLOSE);
 		pop();
 	}
